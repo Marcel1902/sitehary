@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+/* Réinitialisation de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #F8F9FA; /* Bleu principal */
+}
+
+.navbar .container .collapse ul li a {
+  font-size: 18px !important;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  font-style: normal;
+  color: #156183;
+}
+
+.navbar .container .collapse ul li a:hover {
+  color: #fab734;
+}
+
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Couleur de la superposition semi-transparente */
+  z-index: 1;
+}
+
+/* Carousel Captions */
+.carousel-caption.centered-caption {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  width: 80%;
+  color: white;
+}
+
+.carousel-caption h3 {
+  font-size: 60px;
+  color: #fab734; /* Jaune pour le titre */
+  font-family: "Dancing Script", cursive;
+}
+
+.carousel-caption p {
+  font-size: 30px; /* Taille ajustée pour les paragraphes */
+  color: #ffffff; /* Blanc pour lisibilité */
+  font-family: "Poppins", sans-serif;
+}
+.carousel-item img {
+  transition: transform 0.3s ease-in-out;
+}
+.carousel-item img:hover {
+  transform: scale(1.05);
+}
+
+.carousel-caption.centered-caption {
+    animation: slideIn 0.8s ease-in-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Boutons */
+.btn-primary, .btn-yellow {
+  background-color: #fab734; /* Jaune pour les boutons */
+  color: #156183; /* Bleu pour le texte des boutons */
+  border: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.btn-primary:hover, .btn-yellow:hover {
+  background-color: #156183; /* Inverse les couleurs pour le hover */
+  color: #ffffff;
+}
+
+/* Styles pour les titres */
+.section h1,
+.section h3 {
+  color: #156183;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  text-align: center; /* Centre le texte lui-même */
+  position: relative;
+}
+
+/* Soulignement centré */
+.section h1::after,
+.section h3::after {
+  content: "";
+  display: block;
+  width: 50%; /* Ajustez pour la largeur de la ligne */
+  height: 3px;
+  background-color: #fab734;
+  margin: 8px auto 0; /* Espace entre le texte et la ligne */
+}
+
+.section p {
+  color: #333333;
+  font-family: "Poppins", sans-serif;
+}
+.activity-card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.activity-card img {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.modal-content {
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-title {
+    font-size: 24px;
+    color: #156183;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding-top: 0;
+    color: #333;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-body img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+
+.gallery .img-fluid:hover {
+    transform: scale(1.1);
+}
+
+/* Footer (si applicable) */
+.footer {
+  background-color: #156183;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.footer a:hover {
+  color: #ffffff;
+}

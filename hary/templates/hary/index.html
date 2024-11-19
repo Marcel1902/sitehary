@@ -1,0 +1,309 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="{% static 'hary/css/style.css' %}">
+
+    <title>H'Ary</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <!-- Logo à gauche -->
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand d-flex flex-column" href="#">
+                <img src="{% static 'hary/images/logo1.png' %}" alt="Logo" style="height: 10vh;">
+                <span class="mt-0 ms-2" style="font-weight: bold; color: #156183;">"Entan-jaraina mora zaka"</span>
+            </a>
+        </div>
+
+        <!-- Bouton mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars" style="color: #156183;"></i>
+        </button>
+
+        <!-- Liens à droite -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#activities">Activités</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#gallery">Galeries</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#evenements">Événements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+            <div class="coordonnees d-flex justify-content-end me-5">
+                <div class="coordonnees-item pe-3">
+                    <i class="fas fa-phone" style="font-size: 17px; color: #156183;"></i>
+                    <span style="font-size: 17px; color: #156183; font-weight: 500;">038 62 064 61</span>
+                </div>
+                <div class="coordonnees-item pe-3">
+                    <i class="fas fa-envelope" style="font-size: 17px; color: #156183; font-weight: 500;"></i>
+                    <span style="font-size: 17px; color: #156183; font-weight: 500;">hary@hary.com</span>
+                </div>
+            </div>
+</nav>
+
+    </header>
+   <div class="home" id="home">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicateurs -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Diapositive 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Diapositive 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Diapositive 3"></button>
+      </div>
+
+      <!-- Conteneur des diapositives -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'hary/images/bg2.jpg' %}" class="d-block w-100" alt="photo 1">
+          <div class="overlay"></div> <!-- Superposition semi-transparente -->
+          <div class="carousel-caption centered-caption">
+              <h3>Éducation citoyenne et innovation</h3>
+            <p>Encourager les jeunes générations à intégrer l'informatique et l'innovation</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'hary/images/bg3.jpg' %}" class="d-block w-100" alt="photo 2">
+          <div class="overlay"></div>
+          <div class="carousel-caption centered-caption">
+               <h3>Protection de l'environnement</h3>
+            <p>Nous agissons pour préserver la nature et lutter contre le changement climatique</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'hary/images/bg4.jpg' %}" class="d-block w-100" alt="photo 3">
+          <div class="overlay"></div>
+          <div class="carousel-caption centered-caption">
+            <h3>Agri-Tech et Agri-Business</h3>
+            <p>Vulgarisation des techniques Agri-tech et Agri-business</p>
+          </div>
+        </div>
+      </div>
+    </div>
+       <section class="section about mt-5 p-5" id="about">
+           <div class="container">
+               <div class="row d-flex">
+                   <div class="col-md-6">
+                       <img src="{% static 'hary/images/about-image.png' %}" alt="about image" style="width: 100%;">
+                   </div>
+                   <div class="col-md-6">
+                       <h1 class="text-center">Qui sommes-nous?</h1>
+                        <p class="">L'association H'ARY est une organisation à but non lucratif et apolitique dédiée à l'amélioration de la société à travers trois grands axes :</p>
+                       <h5>Éducation citoyenne et innovation :</h5>
+                       <p>Encourager les jeunes générations à intégrer l'informatique et l'innovation dans leur apprentissage pour devenir des citoyens responsables et informés.</p>
+                       <h5>Protection de l'environnement :</h5>
+                       <p>Nous agissons pour préserver la nature et lutter contre le changement climatique, tout en contribuant aux Objectifs de Développement Durable (ODD). </p>
+                       <h5>Agri-Tech et Agri-Business :</h5>
+                       <p>Vulgariser les nouvelles technologies agricoles et promouvoir des solutions durables pour renforcer l'économie rurale et alimentaire.</p>
+                   </div>
+               </div>
+               <hr>
+               <div class="about-2 row mt-5">
+                   <div class="col-md-6">
+                       <h3 class="text-left">Pourquoi rejoindre H'ARY ?</h3>
+                        <p class="">Ensemble, nous pouvons :</p>
+                       <ul>
+                           <li>Offrir une éducation de qualité aux jeunes</li>
+                           <li>Agir pour la protection de notre planète</li>
+                           <li>Développer des solutions agricoles innovantes</li>
+                       </ul>
+                   </div>
+                   <div class="col-md-6">
+                       <h3 class="text-left">Comment nous aider ?</h3>
+                        <p><strong>Bénévolat :</strong> <br> Vous pouvez offrir votre temps et vos compétences pour soutenir nos actions sur le terrain.</p>
+                   </div>
+               </div>
+           </div>
+       </section>
+       <!-- Section Activités -->
+        <section id="activities" class="section mt-5 p-5">
+            <div class="container">
+                <h1 class="text-center mb-5">Activités</h1>
+                <div class="owl-carousel owl-theme">
+                    {% for activity in activities %}
+                    <div class="item">
+                        <div class="card activity-card me-5">
+                            <img src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ activity.title }}</h5>
+                                <p class="card-text">{{ activity.description|truncatewords:10 }}</p>
+                                <p class="card-text"><small class="text-muted">{{ activity.date }}</small></p>
+                                <!-- Bouton pour ouvrir le modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ activity.id }}">
+                                    en savoir plus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal pour chaque activité -->
+                    <div class="modal fade" id="modal-{{ activity.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ activity.id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalLabel-{{ activity.id }}">{{ activity.title }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>{{ activity.description }}</p>
+                                    <p><strong>Date :</strong> {{ activity.date }}</p>
+                                    <img src="{{ activity.image.url }}" class="img-fluid" alt="{{ activity.title }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </section>
+
+       <section class="section gallery mt-5 p-5" id="gallery">
+           <div class="container">
+               <h1 class="text-center mb-5" style="color: #156183;">Quelques images de nos activités</h1>
+               <div class="row">
+                   <div class="col-sm-12 col-md-6 col-lg-4">
+                       <img src="{% static 'hary/images/galery.jpg' %}" class="img-fluid mb-4 shadow rounded" alt="galery 1" style="width:100%;">
+                   </div>
+                   <div class="col-sm-12 col-md-6 col-lg-4">
+                       <img src="{% static 'hary/images/galery6.jpg' %}" class="img-fluid mb-4 shadow rounded" alt="galery 2" style="width:100%;">
+                   </div>
+                   <div class="col-sm-12 col-md-6 col-lg-4">
+                       <img src="{% static 'hary/images/galery2.jpg' %}" class="img-fluid mb-4 shadow rounded" alt="galery 3" style="width:100%;">
+                   </div>
+                   <div class="col-sm-12 col-md-6 col-lg-4">
+                       <img src="{% static 'hary/images/galery8.jpg' %}" class="img-fluid mb-4 shadow rounded" alt="galery 4" style="width:100%;">
+                   </div>
+                   <div class="col-sm-12 col-md-6 col-lg-4">
+                       <img src="{% static 'hary/images/galery7.jpg' %}" class="img-fluid mb-4 shadow rounded" alt="galery 5" style="width:100%;">
+                   </div>
+                   <div class="col-sm-12 col-md-6 col-lg-4">
+                       <img src="{% static 'hary/images/galery5.jpg' %}" class="img-fluid mb-4 shadow rounded" alt="galery 6" style="width:100%;">
+                   </div>
+               </div>
+           </div>
+       </section>
+
+       <section class="section contact mt-5 mb-5 p-0 container shadow" id="contact">
+           <div class="container">
+               <div class="row">
+                   <div class="col-md-6 m-0 pb-0 mb-0 p-0">
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7545.011915942095!2d47.53168054584806!3d-18.997414034267276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07be605361283%3A0xea230132a321a823!2sIavoloha%2C%20Tananarive!5e0!3m2!1sfr!2smg!4v1731663896216!5m2!1sfr!2smg" width="670" height="540" style="border:0; margin: 0; padding: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                   </div>
+                   <div class="col-md-6 p-5">
+                       <h2 class="text-center" style="color: #156183;">Contactez-nous</h2>
+                       <form action="">
+                           <div class="mb-3">
+                               <label for="name" class="form-label">Nom</label>
+                               <input type="text" class="form-control" id="name" required>
+                           </div>
+                           <div class="mb-3">
+                               <label for="email" class="form-label">Email</label>
+                               <input type="email" class="form-control" id="email" required>
+                           </div>
+                           <div class="mb-3">
+                               <label for="message" class="form-label">Message</label>
+                               <textarea class="form-control" id="message" rows="3" required></textarea>
+                           </div>
+                           <button type="submit" class="btn btn-primary text-light">Envoyer</button>
+                       </form>
+                   </div>
+                </div>
+           </div>
+       </section>
+       <footer class="section footer p-5">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Citation et droits réservés -->
+            <div class="col-md-4">
+                <p style="font-style: italic; color: #fab734;">"Entan-jaraina mora zaka."</p>
+                <p style="color: #ffffff;">&copy;2022 H'ARY. Tous droits réservés.</p>
+            </div>
+
+            <!-- Liens utiles alignés en ligne -->
+            <div class="col-md-4 d-flex flex-column align-items-center">
+                <h4>Liens utiles</h4>
+                <ul class="social-media d-flex p-0" style="gap: 15px;">
+                    <li style="list-style: none; font-size: 17px;"><a href="#home">Home</a></li>
+                    <li style="list-style: none; font-size: 17px;"><a href="#about">About</a></li>
+                    <li style="list-style: none; font-size: 17px;"><a href="#activities">Activites</a></li>
+                    <li style="list-style: none; font-size: 17px;"><a href="#gallery">Galleries</a></li>
+                    <li style="list-style: none; font-size: 17px;"><a href="#evenements">Evenements</a></li>
+                    <li style="list-style: none; font-size: 17px;"><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact en bas de la colonne -->
+            <div class="col-md-4 text-center d-flex flex-column justify-content-end">
+                <h4>CONTACTEZ-NOUS</h4>
+                <ul class="p-0 d-flex justify-content-center" style="margin-top: auto;">
+                    <li style="list-style: none; font-weight: bold;">
+                        <a href="mailto:contact@hary.org" class="me-3">
+                            <i class="fa-solid fa-envelope" style="font-size: 30px;"></i>
+                        </a>
+                    </li>
+                    <li style="list-style: none;">
+                        <a href="https://web.facebook.com/profile.php?id=61556605752097">
+                            <i class="fab fa-facebook-square" style="font-size: 30px;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+       <script>
+           $(document).ready(function(){
+            // Initialisez Owl Carousel
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                items: 3
+            });
+
+            // Réinitialisez les modals après l'initialisation du carousel
+            $('.modal').appendTo('body');
+        });
+           $('.open-modal').on('click', function(e){
+            e.preventDefault();
+            let target = $(this).data('target');
+            setTimeout(function() {
+                $(target).modal('show');
+            }, 200); // Utilisez un léger délai
+        });
+           AOS.init(); // Initialisez AOS
+
+       </script>
+</body>
+</html>
