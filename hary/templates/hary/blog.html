@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H'ARY - Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            height: 70vh;
+            background: url('../static/hary/images/blog.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .header .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(21, 97, 131, 0.8); /* Overlay color */
+            z-index: 1;
+        }
+
+        .header .container {
+            z-index: 2;
+            position: relative;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 15px;
+        }
+
+        .btn-explore {
+            background-color: #fab734;
+            color: #156183;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-explore:hover {
+            background-color: #156183;
+            color: #fab734;
+            transform: translateY(-3px);
+        }
+
+        /* Bouton Déconnexion */
+        .logout-user a {
+            font-size: 1rem;
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background: transparent; /* Rendre la barre de navigation transparente */
+            box-shadow: none; /* Supprimer la shadow si */
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+            font-weight: bold;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: #fff !important;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #fab734 !important;
+        }
+
+        /* Blog Post Cards */
+        .blog-container {
+            margin-top: -50px;
+        }
+
+        .blog-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-card .card-body {
+            padding: 15px;
+        }
+
+        .blog-card .card-title {
+            font-size: 1.25rem;
+            color: #156183;
+            font-weight: bold;
+        }
+
+        .blog-card .card-text {
+            color: #555;
+        }
+
+        .blog-card a {
+            text-decoration: none;
+            color: #fab734;
+            font-weight: bold;
+        }
+
+        .blog-card a:hover {
+            color: #156183;
+        }
+
+        /* Style pour le conteneur meta-info */
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #6c757d; /* Couleur gris clair */
+        }
+
+        .meta-info .date,
+        .meta-info .views {
+            background-color: #f8f9fa; /* Fond gris clair */
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid #ddd; /* Bordure subtile */
+        }
+
+        .meta-info .date {
+            color: #156183; /* Bleu */
+        }
+
+        .meta-info .views {
+            color: #fab734; /* Jaune */
+            font-weight: bold;
+        }
+
+        /* Style pour le lien "Lire la suite" */
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #156183;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .read-more:hover {
+            background-color: #0a4d6b; /* Couleur plus sombre au survol */
+        }
+
+
+        /* Pagination */
+        .pagination {
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination .page-link {
+            color: #156183;
+            border: 1px solid #ddd;
+        }
+
+        .pagination .page-link:hover {
+            background-color: #fab734;
+            color: #fff;
+        }
+
+        .pagination .active .page-link {
+            background-color: #156183;
+            color: #fff;
+            border-color: #156183;
+        }
+
+            /* Modal Content */
+        .modal-content {
+            background-color: #ffffff;
+            color: #333;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Modal Header */
+        .modal-header {
+            background-color: #156183;
+            color: white;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        /* Champs du formulaire */
+        .form-control {
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            padding: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #156183;
+            box-shadow: 0 0 5px rgba(21, 97, 131, 0.5);
+        }
+
+        /* Bouton de connexion */
+        .btn-primary {
+            background-color: #fab734;
+            border-color: #fab734;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #e6a31c;
+            transform: translateY(-2px);
+        }
+
+        /* Texte et liens */
+        .modal-body p {
+            color: #666;
+        }
+
+        .modal-body a {
+            color: #156183;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .modal-body a:hover {
+            text-decoration: underline;
+        }
+
+        /* Ombrage et espacement */
+        .modal-body {
+            padding: 30px;
+        }
+
+        .mb-3 label {
+            font-weight: 500;
+        }
+        /* Footer */
+        .footer {
+            background-color: #156183;
+            color: white;
+            padding: 30px 0;
+        }
+
+        .footer h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fab734;
+        }
+
+        .footer p,
+        .footer ul,
+        .footer li {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+            color: white;
+        }
+
+        .footer ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .footer .text-center {
+            font-size: 0.8rem;
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">H'ARY</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#articles">Articles</a>
+                    </li>
+                    {% if not user.is_authenticated %}
+                        <li class="nav-item">
+                            <button class="nav-link btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#login">Se connecter</button>
+                        </li>
+                    {% endif %}
+                    <!-- Bouton d'ajout de blog -->
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#addBlogModal">Ajouter un Blog</button>
+                        </li>
+                        <li class="nav-item logout-user ms-3 pt-2">
+                            <a href="{% url 'logout' %}" > <i class="fas fa-sign-out-alt"></i>Deconnexion</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="overlay"></div>
+        <div class="container text-center text-white">
+            <h1 data-aos="fade-up">Bienvenue sur notre Blog</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Explorez les dernières actualités, inspirations, et événements qui façonnent notre association.</p>
+            <a href="#articles" class="btn btn-explore mt-4" data-aos="zoom-in" data-aos-delay="200">Voir les Articles</a>
+        </div>
+    </header>
+
+    <!-- Blog Posts Section -->
+    <div class="container blog-container mt-5">
+        <div class="row" id="articles">
+            {% for blog in page_obj %}
+            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:'100' }}">
+                <div class="blog-card">
+                    <img src="{{ blog.image.url }}" alt="Blog Image" class="img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <!-- Ajout de la date de création et du nombre de vues -->
+                        <div class="meta-info">
+                            <span class="date">{{ blog.created|date:"d M Y" }}</span>
+                            <span class="views">{{ blog.nb_vues }} vues</span>
+                        </div>
+                        <a href="{% url 'blog_detail' blog.id %}" class="read-more">Lire la suite</a>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                        &laquo;
+                    </a>
+                </li>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                        &raquo;
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>À propos de nous</h5>
+                    <p>Nous partageons des nouvelles passionnantes et des informations intéressantes sur nos activités.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liens rapides</h5>
+                    <ul>
+                        <li><a href="{% url 'home' %}">Accueil</a></li>
+                        <li><a href="#articles">Articles</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact</h5>
+                    <p>Vous pouvez nous contacter à <a href="mailto:contact@example.com">contact@example.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- Modal pour Ajouter un Blog -->
+    <div class="modal fade" id="addBlogModal" tabindex="-1" aria-labelledby="addBlogModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addBlogModalLabel">Ajouter un Nouveau Blog</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{% url 'create_blog' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Titre du Blog</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Contenu du Blog</label>
+                            <textarea class="form-control" id="content" name="content" rows="4" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image du Blog</label>
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Publier</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center" id="loginModalLabel">Se Connecter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{% url 'connexion' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nom d'utilisateur</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="votre nom" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="votre mot de passe" required>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

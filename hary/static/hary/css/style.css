@@ -187,3 +187,43 @@
 .footer a:hover {
   color: #ffffff;
 }
+
+@media (max-width: 750px) {
+    .carousel-caption h3{
+    font-size: 25px;
+}
+
+.carousel-caption p{
+    font-size: 17px;
+}
+.carousel-caption.centered-caption {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2; /* Assure que la légende est au-dessus de la superposition */
+  width: 80%;
+  color: white;
+}
+}
+
+@media (max-width: 750px) {
+    .carousel-caption h3{
+    font-size: 20px;
+}
+
+.carousel-caption p{
+    font-size: 14px;
+}
+.carousel-caption.centered-caption {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2; /* Assure que la légende est au-dessus de la superposition */
+  width: 80%;
+  color: white;
+}
+}

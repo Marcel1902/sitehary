@@ -21,7 +21,7 @@
         <!-- Logo à gauche -->
         <div class="d-flex align-items-center">
             <a class="navbar-brand d-flex flex-column" href="#">
-                <img src="{% static 'hary/images/logo1.png' %}" alt="Logo" style="height: 10vh;">
+                <img src="{% static 'hary/images/hary-logo.png' %}" alt="Logo" style="height: 10vh;">
                 <span class="mt-0 ms-2" style="font-weight: bold; color: #156183;">"Entan-jaraina mora zaka"</span>
             </a>
         </div>
@@ -48,6 +48,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#evenements">Événements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog' %}">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#contact">Contact</a>
@@ -126,7 +129,7 @@
                <div class="about-2 row mt-5">
                    <div class="col-md-6">
                        <h3 class="text-left">Pourquoi rejoindre H'ARY ?</h3>
-                        <p class="">Ensemble, nous pouvons :</p>
+                        <p class=""> <strong>Ensemble, nous pouvons :</strong></p>
                        <ul>
                            <li>Offrir une éducation de qualité aux jeunes</li>
                            <li>Agir pour la protection de notre planète</li>
@@ -171,7 +174,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>{{ activity.description }}</p>
-                                    <p><strong>Date :</strong> {{ activity.date }}</p>
+                                    <p><i class="fas fa-calendar-alt"></i><strong> Date :</strong> {{ activity.date }}</p>
                                     <img src="{{ activity.image.url }}" class="img-fluid" alt="{{ activity.title }}">
                                 </div>
                             </div>
@@ -293,6 +296,7 @@
                     <li style="list-style: none; font-size: 17px;"><a href="#activities">Activites</a></li>
                     <li style="list-style: none; font-size: 17px;"><a href="#gallery">Galleries</a></li>
                     <li style="list-style: none; font-size: 17px;"><a href="#evenements">Evenements</a></li>
+                    <li style="list-style: none; font-size: 17px;"><a href="{% url 'blog' %}">Blog</a></li>
                     <li style="list-style: none; font-size: 17px;"><a href="#contact">Contact</a></li>
                 </ul>
             </div>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ blog.title }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* En-tête avec overlay */
+        .header {
+            position: relative;
+            background: url('{{ blog.image.url }}') no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay sombre */
+        }
+
+        .header .content {
+            position: relative;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .header .meta-info {
+            font-size: 1rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 5px 20px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        /* Navbar améliorée */
+        .navbar {
+            background-color: #156183;
+            padding: 15px 0;
+        }
+
+        .navbar .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+            color: #fff;
+        }
+
+        .navbar .navbar-nav .nav-link {
+            color: #fab734;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .navbar .navbar-nav .nav-link:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Section du blog */
+        .blog-content {
+            padding: 40px 15px;
+        }
+
+        .blog-content h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #156183;
+            margin-bottom: 20px;
+        }
+
+        .blog-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .blog-content .views {
+            font-size: 1rem;
+            color: #fab734;
+            font-weight: bold;
+        }
+
+        .blog-content .read-more {
+            text-decoration: none;
+            font-size: 1.1rem;
+            color: #156183;
+            font-weight: bold;
+            border: 2px solid #156183;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .blog-content .read-more:hover {
+            background-color: #156183;
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #156183;
+            color: white;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .footer a {
+            color: #fab734;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">H'ARY Blog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- En-tête avec Overlay -->
+    <header class="header">
+        <div class="content">
+            <h1>{{ blog.title }}</h1>
+        </div>
+    </header>
+
+    <!-- Contenu du blog -->
+    <section class="blog-content container">
+        <h2>{{ blog.title }} <br> <span style="font-size: 14px;"><i class="fa-solid fa-calendar-days"></i> {{ blog.created|date:"d M Y" }}</span> <span class="views badge bg-warning text-dark " >{{ blog.nb_vues }} vues</span> </h2>
+        <p>{{ blog.content|linebreaksbr }}</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2022 H'ARY | Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
