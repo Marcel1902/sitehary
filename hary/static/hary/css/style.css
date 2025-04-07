@@ -24,16 +24,6 @@
   color: #fab734;
 }
 
-.navbar-toggler i {
-  transition: transform 0.2s ease-in-out;
-}
-
-.navbar-toggler:hover i {
-  transform: scale(1.1);
-  color: #fab734; /* Couleur alternative au survol */
-}
-
-
 
 /* Overlay */
 .overlay {
