@@ -13,7 +13,7 @@
 }
 
 .navbar .container .collapse ul li a {
-  font-size: 18px !important;
+  font-size: 15px !important;
   font-family: "Poppins", sans-serif;
   font-weight: bolder;
   font-style: normal;
@@ -23,6 +23,16 @@
 .navbar .container .collapse ul li a:hover {
   color: #fab734;
 }
+
+.navbar-toggler i {
+  transition: transform 0.2s ease-in-out;
+}
+
+.navbar-toggler:hover i {
+  transform: scale(1.1);
+  color: #fab734; /* Couleur alternative au survol */
+}
+
 
 
 /* Overlay */
@@ -39,7 +49,7 @@
 /* Carousel Captions */
 .carousel-caption.centered-caption {
   position: absolute;
-  top: 55%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -61,6 +71,8 @@
 }
 .carousel-item img {
   transition: transform 0.3s ease-in-out;
+  width: 100%;
+  height: auto;
 }
 .carousel-item img:hover {
   transform: scale(1.05);
@@ -189,41 +201,71 @@
 }
 
 @media (max-width: 750px) {
-    .carousel-caption h3{
-    font-size: 25px;
-}
-
-.carousel-caption p{
-    font-size: 17px;
-}
-.carousel-caption.centered-caption {
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 2; /* Assure que la légende est au-dessus de la superposition */
-  width: 80%;
-  color: white;
-}
-}
-
-@media (max-width: 750px) {
-    .carousel-caption h3{
+  .carousel-caption h3 {
     font-size: 20px;
+  }
+
+  .carousel-caption p {
+    font-size: 14px;
+  }
+
+  .carousel-caption.centered-caption {
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    width: 80%;
+    color: white;
+  }
+
+  .navbar .container .collapse ul li a {
+    font-size: 14px !important;
+  }
+
+  .btn-primary, .btn-yellow {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 }
 
-.carousel-caption p{
-    font-size: 14px;
+.text-phone, .text-mail {
+  font-size: 17px;
+  color: #156183;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
 }
-.carousel-caption.centered-caption {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 2; /* Assure que la légende est au-dessus de la superposition */
-  width: 80%;
-  color: white;
+
+/* Responsive (optionnel) */
+@media (max-width: 576px) {
+  .coordonnees {
+    justify-content: center !important;
+    text-align: center;
+    margin-right: 0 !important;
+  }
+
+  .coordonnees-item {
+    flex: 0 0 100%;
+    justify-content: center;
+  }
 }
+
+footer a:hover {
+  color: #fab734 !important;
+  transition: color 0.3s;
+}
+
+footer h4 {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  footer ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer ul li {
+    margin-bottom: 8px;
+  }
 }

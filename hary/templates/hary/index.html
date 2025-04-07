@@ -3,6 +3,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="H'ARY - Association pour l'éducation, l'environnement et l'agri-business à Madagascar.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -31,6 +33,7 @@
             <i class="fas fa-bars" style="color: #156183;"></i>
         </button>
 
+
         <!-- Liens à droite -->
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
@@ -58,16 +61,17 @@
             </ul>
         </div>
     </div>
-            <div class="coordonnees d-flex justify-content-end me-5">
-                <div class="coordonnees-item pe-3">
-                    <i class="fas fa-phone" style="font-size: 17px; color: #156183;"></i>
-                    <span style="font-size: 17px; color: #156183; font-weight: 500;">038 62 064 61</span>
-                </div>
-                <div class="coordonnees-item pe-3">
-                    <i class="fas fa-envelope" style="font-size: 17px; color: #156183; font-weight: 500;"></i>
-                    <span style="font-size: 17px; color: #156183; font-weight: 500;">hary@hary.com</span>
-                </div>
+        <div class="coordonnees d-flex flex-wrap justify-content-end me-5 mt-2">
+            <div class="coordonnees-item d-flex align-items-center pe-3 mb-2">
+            <i class="fas fa-phone me-2" style="font-size: 17px; color: #156183;"></i>
+            <span class="text-phone">038 62 064 61</span>
             </div>
+            <div class="coordonnees-item d-flex align-items-center pe-3 mb-2">
+            <i class="fas fa-envelope me-2" style="font-size: 17px; color: #156183;"></i>
+            <span class="text-mail">hary@hary.com</span>
+            </div>
+        </div>
+      
 </nav>
 
     </header>
@@ -143,48 +147,51 @@
                </div>
            </div>
        </section>
-       <!-- Section Activités -->
+            <!-- Section Activités -->
         <section id="activities" class="section mt-5 p-5">
             <div class="container">
                 <h1 class="text-center mb-5">Activités</h1>
-                <div class="owl-carousel owl-theme">
+                <div class="row">
                     {% for activity in activities %}
-                    <div class="item">
-                        <div class="card activity-card me-5">
-                            <img src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.title }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ activity.title }}</h5>
-                                <p class="card-text">{{ activity.description|truncatewords:10 }}</p>
-                                <p class="card-text"><small class="text-muted">{{ activity.date }}</small></p>
-                                <!-- Bouton pour ouvrir le modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ activity.id }}">
-                                    en savoir plus
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal pour chaque activité -->
-                    <div class="modal fade" id="modal-{{ activity.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ activity.id }}" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalLabel-{{ activity.id }}">{{ activity.title }}</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>{{ activity.description }}</p>
-                                    <p><i class="fas fa-calendar-alt"></i><strong> Date :</strong> {{ activity.date }}</p>
-                                    <img src="{{ activity.image.url }}" class="img-fluid" alt="{{ activity.title }}">
+                        <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
+                            <div class="card activity-card me-5">
+                                <img src="{{ activity.image.url }}" class="card-img-top" alt="{{ activity.title }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ activity.title }}</h5>
+                                    <p class="card-text">{{ activity.description|truncatewords:10 }}</p>
+                                    <p class="card-text"><small class="text-muted">{{ activity.date }}</small></p>
+                                    <!-- Bouton pour ouvrir le modal -->
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ activity.id }}">
+                                        en savoir plus
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     {% endfor %}
                 </div>
+                </div>
             </div>
-
         </section>
+
+        <!-- Modals en dehors du carousel -->
+        {% for activity in activities %}
+        <div class="modal fade" id="modal-{{ activity.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ activity.id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel-{{ activity.id }}">{{ activity.title }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{ activity.description }}</p>
+                        <p><i class="fas fa-calendar-alt"></i> <strong>Date :</strong> {{ activity.date }}</p>
+                        <img src="{{ activity.image.url }}" class="img-fluid" alt="{{ activity.title }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
 
        <section class="section gallery mt-5 p-5" id="gallery">
            <div class="container">
@@ -254,8 +261,8 @@
        <section class="section contact mt-5 mb-5 p-0 container shadow" id="contact">
            <div class="container">
                <div class="row">
-                   <div class="col-md-6 m-0 pb-0 mb-0 p-0">
-                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7545.011915942095!2d47.53168054584806!3d-18.997414034267276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07be605361283%3A0xea230132a321a823!2sIavoloha%2C%20Tananarive!5e0!3m2!1sfr!2smg!4v1731663896216!5m2!1sfr!2smg" width="670" height="540" style="border:0; margin: 0; padding: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                   <div class="col-md-6 m-0 p-0">
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7545.011915942095!2d47.53168054584806!3d-18.997414034267276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07be605361283%3A0xea230132a321a823!2sIavoloha%2C%20Tananarive!5e0!3m2!1sfr!2smg!4v1731663896216!5m2!1sfr!2smg" width="600" height="540" style="border:0; margin: 0; padding: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                    </div>
                    <div class="col-md-6 p-5">
                        <h2 class="text-center" style="color: #156183;">Contactez-nous</h2>
@@ -279,65 +286,66 @@
            </div>
        </section>
        <footer class="section footer p-5">
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Citation et droits réservés -->
-            <div class="col-md-4">
-                <p style="font-style: italic; color: #fab734;">"Entan-jaraina mora zaka."</p>
-                <p style="color: #ffffff;">&copy;2022 H'ARY. Tous droits réservés.</p>
+        <div class="container-fluid">
+          <div class="row text-white">
+      
+            <!-- Citation -->
+            <div class="col-md-4 mb-4 mb-md-0">
+              <p style="font-style: italic; color: #fab734;">"Entan-jaraina mora zaka."</p>
+              <p style="color: whitesmoke;">&copy;2022 H'ARY. Tous droits réservés.</p>
             </div>
-
-            <!-- Liens utiles alignés en ligne -->
-            <div class="col-md-4 d-flex flex-column align-items-center">
-                <h4>Liens utiles</h4>
-                <ul class="social-media d-flex p-0" style="gap: 15px;">
-                    <li style="list-style: none; font-size: 17px;"><a href="#home">Home</a></li>
-                    <li style="list-style: none; font-size: 17px;"><a href="#about">About</a></li>
-                    <li style="list-style: none; font-size: 17px;"><a href="#activities">Activites</a></li>
-                    <li style="list-style: none; font-size: 17px;"><a href="#gallery">Galleries</a></li>
-                    <li style="list-style: none; font-size: 17px;"><a href="#evenements">Evenements</a></li>
-                    <li style="list-style: none; font-size: 17px;"><a href="{% url 'blog' %}">Blog</a></li>
-                    <li style="list-style: none; font-size: 17px;"><a href="#contact">Contact</a></li>
-                </ul>
+      
+            <!-- Liens utiles -->
+            <div class="col-md-4 d-flex flex-column align-items-center mb-4 mb-md-0">
+              <h4 class="mb-3 text-white">Liens utiles</h4>
+              <ul class="d-flex flex-wrap justify-content-center gap-3 p-0 m-0">
+                <li style="list-style: none;"><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                <li style="list-style: none;"><a href="#about" class="text-white text-decoration-none">About</a></li>
+                <li style="list-style: none;"><a href="#activities" class="text-white text-decoration-none">Activites</a></li>
+                <li style="list-style: none;"><a href="#gallery" class="text-white text-decoration-none">Galleries</a></li>
+                <li style="list-style: none;"><a href="#evenements" class="text-white text-decoration-none">Evenements</a></li>
+                <li style="list-style: none;"><a href="{% url 'blog' %}" class="text-white text-decoration-none">Blog</a></li>
+                <li style="list-style: none;"><a href="#contact" class="text-white text-decoration-none">Contact</a></li>
+              </ul>
             </div>
-
-            <!-- Contact en bas de la colonne -->
-            <div class="col-md-4 text-center d-flex flex-column justify-content-end">
-                <h4>CONTACTEZ-NOUS</h4>
-                <ul class="p-0 d-flex justify-content-center" style="margin-top: auto;">
-                    <li style="list-style: none; font-weight: bold;">
-                        <a href="mailto:contact@hary.org" class="me-3">
-                            <i class="fa-solid fa-envelope" style="font-size: 30px;"></i>
-                        </a>
-                    </li>
-                    <li style="list-style: none;">
-                        <a href="https://web.facebook.com/profile.php?id=61556605752097">
-                            <i class="fab fa-facebook-square" style="font-size: 30px;"></i>
-                        </a>
-                    </li>
-                </ul>
+      
+            <!-- Contact -->
+            <div class="col-md-4 text-center">
+              <h4 class="text-white mb-3">CONTACTEZ-NOUS</h4>
+              <ul class="p-0 d-flex justify-content-center gap-4 m-0">
+                <li style="list-style: none;">
+                  <a href="mailto:contact@hary.org" class="text-white">
+                    <i class="fas fa-envelope" style="font-size: 30px;"></i>
+                  </a>
+                </li>
+                <li style="list-style: none;">
+                  <a href="https://web.facebook.com/profile.php?id=61556605752097" class="text-white" target="_blank">
+                    <i class="fab fa-facebook-square" style="font-size: 30px;"></i>
+                  </a>
+                </li>
+              </ul>
             </div>
+      
+          </div>
         </div>
-    </div>
-</footer>
+      </footer>      
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
-       <script>
-           $(document).ready(function(){
-            // Initialisez Owl Carousel
-            $('.owl-carousel').owlCarousel({
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script>
+            AOS.init();
+            $(".owl-carousel").owlCarousel({
+                items: 3,
                 loop: true,
                 margin: 10,
-                nav: true,
-                items: 3
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true
             });
 
-            // Réinitialisez les modals après l'initialisation du carousel
-            $('.modal').appendTo('body');
-        });
            $('.open-modal').on('click', function(e){
             e.preventDefault();
             let target = $(this).data('target');
