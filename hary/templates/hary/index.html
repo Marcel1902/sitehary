@@ -260,22 +260,30 @@
            <div class="container">
                <div class="row">
                    <div class="col-md-6 m-0 p-0">
-                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7545.011915942095!2d47.53168054584806!3d-18.997414034267276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07be605361283%3A0xea230132a321a823!2sIavoloha%2C%20Tananarive!5e0!3m2!1sfr!2smg!4v1731663896216!5m2!1sfr!2smg" width="600" height="540" style="border:0; margin: 0; padding: 0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7545.011915942095!2d47.53168054584806!3d-18.997414034267276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21f07be605361283%3A0xea230132a321a823!2sIavoloha%2C%20Tananarive!5e0!3m2!1sfr!2smg!4v1731663896216!5m2!1sfr!2smg" width="600" height="620" style="border:0; margin: 0; padding: 0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                    </div>
                    <div class="col-md-6 p-5">
                        <h2 class="text-center" style="color: #156183;">Contactez-nous</h2>
-                       <form action="">
+                       {% if message %}
+                            <p>{{ message }}</p>
+                        {% endif %}
+                       <form action="{% url 'contact' %}" method="POST">
+                        {% csrf_token %}
                            <div class="mb-3">
                                <label for="name" class="form-label">Nom</label>
-                               <input type="text" class="form-control" id="name" required>
+                               <input type="text" class="form-control" id="name" name="nom" required>
                            </div>
                            <div class="mb-3">
                                <label for="email" class="form-label">Email</label>
-                               <input type="email" class="form-control" id="email" required>
+                               <input type="email" class="form-control" id="email" name="email" required>
                            </div>
                            <div class="mb-3">
+                                <label for="subject" class="form-label">Sujet</label>
+                                <input type="text" class="form-control" id="subject" name="subject" required>
+                            </div>
+                           <div class="mb-3">
                                <label for="message" class="form-label">Message</label>
-                               <textarea class="form-control" id="message" rows="3" required></textarea>
+                               <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
                            </div>
                            <button type="submit" class="btn btn-primary text-light">Envoyer</button>
                        </form>
